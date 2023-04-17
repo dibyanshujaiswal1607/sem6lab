@@ -92,7 +92,7 @@ $E       *a+a$  Reduce by E->a
 $E*       a+a$  shift->*                                                        
 $E*a       +a$  shift a                                                         
 $E*E       +a$  Reduce by E->a                                                  
-$E		   +a$  Reduce by E->E*E
+$E         +a$  Reduce by E->E*E                                                
 $E+         a$  shift->+                                                        
 $E+a         $  shift a                                                         
 $E+E         $  Reduce by E->a                                                  
