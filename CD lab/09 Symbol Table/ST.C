@@ -1,31 +1,66 @@
 #include <stdio.h>
-#include <conio.h>
-
-struct intermediate {
-	int addr;
-	char label[10];
-	char mnem[10];
-	char op[10];
-} res;
-struct symbol {
-	char symbol[10];
-	int addr;
-} sy;
+#include <ctype.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
 
 void main() {
-	FILE *s1, *p1;
+	int i = 0, j = 0, x = 0, n;
+	void *p, *add[5];
+	char ch, srch, b[15], d[15], c;
 	clrscr();
-	s1 = fopen("inter.txt", "r+");
-	p1 = fopen("symbol.txt", "w");
-	while(!feof(s1)) {
-		fscanf(s1, "%d %s %s %s", &res.addr, res.label, res.mnem, res.op);
-		if(strcmp(res.label, "NULL") != 0) {
-			strcpy(sy.symbol, res.label);
-			sy.addr = res.addr;
-			fprintf(p1, "%s\t%d\n", sy.symbol, sy.addr);
+	printf("Expression terminated by $:");
+	while((c = getchar()) != '$') {
+		b[i] = c;
+		i++;
+	}
+	n = i - 1;
+	printf("Given Expression:");
+	i = 0;
+	while(i <= n) {
+		printf("%c", b[i]);
+		i++;
+	}
+	printf("\nSymbol Table\n");
+	printf("\nSymbol \t addr \t type");
+	while(j <= n) {
+		c = b[j];
+		if(isalpha(toascii(c))) {
+			p = malloc(c);
+			add[x] = p;
+			d[x] = c;
+			printf("\n%c \t %d \t identifier\n", c, p);
+			x++;
+			j++;
+		} else {
+			ch = c;
+			if(ch == '+' || ch == '-' || ch == '*' || ch == '=') {
+				p = malloc(ch);
+				add[x] = p;
+				d[x] = ch;
+				printf("\n %c \t %d \t operator\n", ch, p);
+				x++;
+				j++;
+			}
 		}
 	}
-	fcloseall();
-	printf("Symbol Table Created");
 	getch();
 }
+
+/*
+OUTPUT:
+Expression terminated by $:A=B+C$                                               
+Given Expression:A=B+C                                                          
+Symbol Table                                                                    
+                                                                                
+Symbol   addr    type                                                           
+A        1828    identifier                                                     
+                                                                                
+ =       1898    operator                                                       
+                                                                                
+B        1964    identifier                                                     
+                                                                                
+ +       2034    operator                                                       
+                                                                                
+C        2082    identifier                                                     
+*/
