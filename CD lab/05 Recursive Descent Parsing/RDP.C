@@ -65,3 +65,21 @@ void main() {
 		printf("\nSyntax Error!");
 	getch();
 }
+
+/*
+OUTPUT:
+Enter the string: a+a*a                                                         
+                                                                                
+E->TE'                                                                          
+T->FT'                                                                          
+F->a                                                                            
+T'->^                                                                           
+E'->+TE'                                                                        
+T->FT'                                                                          
+F->a                                                                            
+T'->*FT'                                                                        
+F->a                                                                            
+T'->^                                                                           
+E'->^                                                                           
+String successfully parsed!                                                     
+*/                                 

@@ -76,3 +76,40 @@ void main() {
 	}
 	getch();
 }
+
+/*
+OUTPUT:
+Enter the total no. of terminals: 3
+
+Enter the terminals: a+$
+
+Enter the table values:
+Enter the value for a a: e
+Enter the value for a +: >
+Enter the value for a $: >             
+Enter the value for + a: <                                                      
+Enter the value for + +: >                                                      
+Enter the value for + $: >                                                      
+Enter the value for $ a: <                                                      
+Enter the value for $ +: <                                                      
+Enter the value for $ $: a                                                      
+										
+OPERATOR PRECEDENCE TABLE:                                                      
+	a       +       $                                                       
+										
+a       e       >       >                                                       
++       <       >       >                                                       
+$       <       <       a                                                       
+										
+Enter the input string: a+a$                                                    
+                                                                                
+STACK                   INPUT STRING                    ACTION                  
+                                                                                
+$                       a+a$                    Shift a                         
+$<a                     +a$                     Reduce                          
+$                       +a$                     Shift +                         
+$<+                     a$                      Shift a                         
+$<+<a                   $                       Reduce                          
+$<+                     $                       Reduce                          
+$                       $                       String is accepted              
+*/

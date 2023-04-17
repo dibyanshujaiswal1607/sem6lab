@@ -107,3 +107,16 @@ void fright(int x) {
 		x++;
 	}
 }
+
+/*
+OUTPUT:
+		INTERMEDIATE CODE GENERATION                                    
+                                                                                
+Enter the Expression : a=b+c*d/e                                                
+The intermediate code                                                           
+        Z = d/e         a=b+c*Z                                                 
+        Y = c*Z         a=b+Y                                                   
+        X = b+Y         a=X                                                     
+        a = X                                                                   
+*/										
+                               

@@ -73,3 +73,26 @@ void reduce() {
 		}
 	}
 }
+
+/*
+OUTPUT:
+GRAMMAR is                                                                      
+ E->E+E                                                                         
+ E->E*E                                                                         
+ E->(E)                                                                         
+ E->a                                                                           
+Enter input string:                                                             
+a*a+a                                                                           
+stack    input   action                                                         
+                                                                                
+$a       *a+a$  shift a                                                         
+$E       *a+a$  Reduce by E->a                                                  
+$E*       a+a$  shift->*                                                        
+$E*a       +a$  shift a                                                         
+$E*E       +a$  Reduce by E->a                                                  
+$E+         a$  shift->+                                                        
+$E+a         $  shift a                                                         
+$E+E         $  Reduce by E->a                                                  
+$E           $  Reduce by E->E+E                                                
+$E           $  Accept                                                          
+*/
