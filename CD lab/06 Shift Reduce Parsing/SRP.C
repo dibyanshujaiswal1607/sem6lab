@@ -61,6 +61,7 @@ void reduce() {
 			stk[z] = 'E';
 			stk[z + 1] = '\0';
 			stk[z + 2] = '\0';
+			printf("\n%s\t%s\tReduce by E->E*E", stk, a);
 			i = i - 2;
 		}
 	}
@@ -69,6 +70,7 @@ void reduce() {
 			stk[z] = 'E';
 			stk[z + 1] = '\0';
 			stk[z + 2] = '\0';
+			printf("\n%s\t%s\tReduce by E->(E)", stk, a);
 			i = i - 2;
 		}
 	}
@@ -90,6 +92,7 @@ $E       *a+a$  Reduce by E->a
 $E*       a+a$  shift->*                                                        
 $E*a       +a$  shift a                                                         
 $E*E       +a$  Reduce by E->a                                                  
+$E		   +a$  Reduce by E->E*E
 $E+         a$  shift->+                                                        
 $E+a         $  shift a                                                         
 $E+E         $  Reduce by E->a                                                  
