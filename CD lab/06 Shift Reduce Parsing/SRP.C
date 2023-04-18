@@ -17,19 +17,11 @@ void main() {
 	stk[0] = '$';
 	puts("stack \t input \t action");
 	for(i = 1, j = 0; j < c; i++, j++) {
-		if(a[j] == 'a') {
-			stk[i] = a[j];
-			stk[i + 1] = '\0';
-			a[j] = ' ';
-			printf("\n%s\t%s\tshift a", stk, a);
-			reduce();
-		} else {
-			stk[i] = a[j];
-			stk[i + 1] = '\0';
-			a[j] = ' ';
-			printf("\n%s\t%s\tshift->%c", stk, a, stk[i]);
-			reduce();
-		}
+		stk[i] = a[j];
+		stk[i + 1] = '\0';
+		a[j] = ' ';
+		printf("\n%s\t%s\tshift %c", stk, a, stk[i]);
+		reduce();
 	}
 	if(a[j] == '$')
 		reduce();
@@ -45,6 +37,7 @@ void reduce() {
 			stk[z] = 'E';
 			stk[z + 1] = '\0';
 			printf("\n%s\t%s\tReduce by E->a", stk, a);
+			reduce();
 		}
 	}
 	for(z = 1; z <= c; z++) {
@@ -54,6 +47,7 @@ void reduce() {
 			stk[z + 2] = '\0';
 			printf("\n%s\t%s\tReduce by E->E+E", stk, a);
 			i = i - 2;
+			reduce();
 		}
 	}
 	for(z = 1; z <= c; z++) {
@@ -63,6 +57,7 @@ void reduce() {
 			stk[z + 2] = '\0';
 			printf("\n%s\t%s\tReduce by E->E*E", stk, a);
 			i = i - 2;
+			reduce();
 		}
 	}
 	for(z = 1; z <= c; z++) {
@@ -72,6 +67,7 @@ void reduce() {
 			stk[z + 2] = '\0';
 			printf("\n%s\t%s\tReduce by E->(E)", stk, a);
 			i = i - 2;
+			reduce();
 		}
 	}
 }
